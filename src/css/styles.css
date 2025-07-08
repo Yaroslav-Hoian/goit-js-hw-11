@@ -190,3 +190,7 @@ img {
     transform: translateX(0%);
   }
 }
+
+.hidden {
+  display: none !important;
+}

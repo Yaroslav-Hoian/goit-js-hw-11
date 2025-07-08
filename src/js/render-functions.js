@@ -51,15 +51,9 @@ export function clearGallery() {
 }
 
 export function showLoader() {
-    const loader = document.querySelector(".loader");
-    if (!loader) {
-        loaderBox.insertAdjacentHTML ("beforeend", '<span class="loader"></span>')
-    }
+    loaderBox.classList.remove("hidden");
 }
 
 export function hideLoader() {
-    const loader = document.querySelector(".loader");
-    if (loader) {
-        loader.remove()
-    }
+    loaderBox.classList.add("hidden");
 }

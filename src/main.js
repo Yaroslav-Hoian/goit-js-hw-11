@@ -26,12 +26,9 @@ function handleSubmit(ev) {
     }
 
     showLoader()
-
-    getImagesByQuery(query)
+    setTimeout(() => {
+        getImagesByQuery(query)
         .then(images => {
-            setTimeout(() => {
-                hideLoader();
-
                 if (images.length === 0) {
                     iziToast.error({
                         title: `Sorry, there are no images matching your search ${query}. Please try again!`,
@@ -40,18 +37,16 @@ function handleSubmit(ev) {
                 } else {
                     createGallery(images);
                 };
-            }, 1500);
-        })
-
+            })
         .catch(error => {
-            setTimeout(() => {
-                hideLoader();
-
                 iziToast.error({
                     title: error.message,
                 });
-            }, 1500);
         })
-    
+            .finally(() => {
+            hideLoader()
+        })
+    },1500)
+
     form.reset();
 }
